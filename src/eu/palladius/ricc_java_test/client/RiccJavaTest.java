@@ -1,6 +1,7 @@
 package eu.palladius.ricc_java_test.client;
 
 import eu.palladius.ricc_java_test.shared.FieldVerifier;
+
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -37,6 +38,7 @@ public class RiccJavaTest implements EntryPoint {
   /**
    * This is the entry point method.
    */
+  @Override
   public void onModuleLoad() {
     final Button sendButton = new Button("Send");
     final TextBox nameField = new TextBox();
@@ -77,6 +79,7 @@ public class RiccJavaTest implements EntryPoint {
 
     // Add a handler to close the DialogBox
     closeButton.addClickHandler(new ClickHandler() {
+      @Override
       public void onClick(ClickEvent event) {
         dialogBox.hide();
         sendButton.setEnabled(true);
@@ -89,6 +92,7 @@ public class RiccJavaTest implements EntryPoint {
       /**
        * Fired when the user clicks on the sendButton.
        */
+      @Override
       public void onClick(ClickEvent event) {
         sendNameToServer();
       }
@@ -96,6 +100,7 @@ public class RiccJavaTest implements EntryPoint {
       /**
        * Fired when the user types in the nameField.
        */
+      @Override
       public void onKeyUp(KeyUpEvent event) {
         if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
           sendNameToServer();
@@ -119,6 +124,7 @@ public class RiccJavaTest implements EntryPoint {
         textToServerLabel.setText(textToServer);
         serverResponseLabel.setText("");
         greetingService.greetServer(textToServer, new AsyncCallback<String>() {
+          @Override
           public void onFailure(Throwable caught) {
             // Show the RPC error message to the user
             dialogBox.setText("Remote Procedure Call - Failure");
@@ -128,6 +134,7 @@ public class RiccJavaTest implements EntryPoint {
             closeButton.setFocus(true);
           }
 
+          @Override
           public void onSuccess(String result) {
             dialogBox.setText("Remote Procedure Call");
             serverResponseLabel.removeStyleName("serverResponseLabelError");

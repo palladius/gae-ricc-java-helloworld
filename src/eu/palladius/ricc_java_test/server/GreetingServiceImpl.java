@@ -10,6 +10,8 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 @SuppressWarnings("serial")
 public class GreetingServiceImpl extends RemoteServiceServlet implements GreetingService {
 
+  
+  @Override
   public String greetServer(String input) throws IllegalArgumentException {
     // Verify that the input is valid. 
     if (!FieldVerifier.isValidName(input)) {
@@ -25,7 +27,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
     input = escapeHtml(input);
     userAgent = escapeHtml(userAgent);
 
-    return "Bella vecchio, " + input + "!<br><br>I am running " + serverInfo
+    return "[RiccJavaHelloworld] Bella vecchio, " + input + "!<br><br>I am running " + serverInfo
         + ".<br><br>It looks like you are using:<br>" + userAgent;
   }
 

@@ -3,3 +3,4 @@ war/WEB-INF/deploy/
 war/WEB-INF/appengine-generated/
 doc/
 *.class
+war/riccjavatest/
